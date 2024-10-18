@@ -1,17 +1,10 @@
-import { useState } from 'react'
+import { RouterProvider } from "react-router-dom"
+import { router } from './routes/routes'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <h1>Vite + React</h1>
-      <div className="card text-[40px]">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-      
+      <RouterProvider router={router} />
     </>
   )
 }
