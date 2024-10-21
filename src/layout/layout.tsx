@@ -6,20 +6,20 @@ import { useState } from "react";
 
 export default function Layout() {
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
   return (
-    <div className="flex">
-      {isSidebarOpen && <Sidebar />}
-      <div className="flex-1">
-        <Header onToggle={toggleSidebar} />
+    <div>
+      <Header onToggle={toggleSidebar} />
+      <div className="flex">
+        <Sidebar isOpen={isSidebarOpen} />
         <Outlet />
-        <Footer />
       </div>
+      <Footer />
     </div>
   )
 }
