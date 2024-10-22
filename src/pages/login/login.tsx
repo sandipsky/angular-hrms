@@ -1,6 +1,13 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
+
+  const navigate = useNavigate();
+
+  const login = () => {
+    localStorage.setItem('token', 'as')
+    navigate('/')
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -33,6 +40,7 @@ export default function Login() {
           </div>
           <button
             type="submit"
+            onClick={() => login()}
             className="w-full py-2 px-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             Login

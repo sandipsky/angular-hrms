@@ -5,13 +5,19 @@ import Layout from "../layout/layout";
 import Register from "../pages/register/register";
 import Accounts from "../pages/accounts/accounts";
 import Transactions from "../pages/transactions/transactions";
+import { AuthProvider } from "../auth/authcontext";
+import ProtectedRoute from "./protected-route";
+import Category from "../pages/category/category";
 
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <Layout />,
+        element: <AuthProvider> <ProtectedRoute><Layout /></ProtectedRoute> </AuthProvider>,
         children: [
-            { path: "", element: <Home /> },
+            {
+                path: "",
+                element: <Home />
+            },
             {
                 path: "accounts",
                 element: <Accounts />
@@ -21,8 +27,8 @@ export const router = createBrowserRouter([
                 element: <Transactions />
             },
             {
-                path: "products",
-                element: <Accounts />
+                path: "category",
+                element: <Category />
             },
         ],
     },
