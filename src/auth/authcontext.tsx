@@ -7,6 +7,7 @@ type AuthContextType = {
     token: string | null;
     user: User | null;
     logout: () => void;
+    login: (newToken: string, user: User) => void;
     isLoggedIn: () => boolean;
 };
 
@@ -24,6 +25,13 @@ export const AuthProvider = ({ children }: Props) => {
         return token != null;
     };
 
+    const login = (newToken: string, userData: User) => {
+        localStorage.setItem('token', newToken);
+        localStorage.setItem('user', JSON.stringify(userData));
+        setToken(newToken);
+        setUser(userData);
+    };
+
     const logout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
@@ -34,7 +42,7 @@ export const AuthProvider = ({ children }: Props) => {
 
     return (
         <AuthContext.Provider
-            value={{ token, user, logout, isLoggedIn }}>
+            value={{ token, user, logout, login, isLoggedIn }}>
             <>{children}</>
         </AuthContext.Provider>
     );

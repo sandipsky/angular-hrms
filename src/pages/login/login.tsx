@@ -1,26 +1,41 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useAuth } from "../../auth/authcontext";
+import { useForm } from "react-hook-form";
+import { User } from "../../models/user";
 
 export default function Login() {
 
   const navigate = useNavigate();
 
-  const login = () => {
-    localStorage.setItem('token', 'as')
-    navigate('/')
-  }
+  const { isLoggedIn, login } = useAuth();
 
-  return (
+  const { register, handleSubmit, formState: { errors } } = useForm<User>({
+    mode: "onChange",
+  });
+
+  const onSubmit = (data: User) => {
+    const fakeToken = 'some-token';
+    const fakeUser = { username: data.username, password: data.password };
+    login(fakeToken, fakeUser);
+    navigate('/');
+  };
+
+  return isLoggedIn() ? (<Navigate to="/" />) : (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
-        <form className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
-            <label className="block mb-2 text-sm font-medium text-gray-600">Email/Username</label>
+            <label className="block mb-2 text-sm font-medium text-gray-600">Username</label>
             <input
-              type="email"
+              type="text"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              placeholder="Email"
+              placeholder="Username"
+              {...register("username", {
+                required: "Username is required",
+              })}
             />
+            {errors.username && (<span className="text-red-500 text-sm">{errors.username.message?.toString()}</span>)}
           </div>
           <div>
             <label className="block mb-2 text-sm font-medium text-gray-600">Password</label>
@@ -28,10 +43,14 @@ export default function Login() {
               type="password"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="Password"
+              {...register("password", {
+                required: "Password is required",
+              })}
             />
+            {errors.password && (<span className="text-red-500 text-sm">{errors.password.message?.toString()}</span>)}
           </div>
           <div className="flex items-center justify-end">
-            
+
             <div className="text-sm">
               <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
                 Forgot your password?
@@ -40,7 +59,6 @@ export default function Login() {
           </div>
           <button
             type="submit"
-            onClick={() => login()}
             className="w-full py-2 px-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             Login
