@@ -1,21 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { navData } from "../../data/navdata";
 
 const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
+    const location = useLocation();
+    
     return (
-        <div className={`${isOpen ? 'w-[170px]' : 'w-0'} h-screen bg-gray-800 text-white transition-width duration-300 ease-in-out`}>
-            <ul className="space-y-2 px-2">
-                <li>
-                    <Link to='/' className="block hover:bg-gray-700 px-6 py-2 rounded">Home</Link>
-                </li>
-                <li>
-                    <Link to='/transactions' className="block hover:bg-gray-700 px-6 py-2 rounded">Transactions</Link>
-                </li>
-                <li>
-                    <Link to='/accounts' className="block hover:bg-gray-700 px-6 py-2 rounded">Accounts</Link>
-                </li>
-                <li>
-                    <Link to='/budgets' className="block hover:bg-gray-700 px-6 py-2 rounded">Budgets</Link>
-                </li>
+        <div className={`${isOpen ? 'w-[170px]' : 'w-0'} overflow-hidden h-screen bg-gray-800 text-white transition-width duration-300 ease-in-out`}>
+            <ul className="px-2 flex flex-col gap-2">
+                {navData.map((data) => (
+                    <li>
+                        <Link to={data.link} className={`block hover:bg-gray-700 px-6 py-2 rounded ${location.pathname === data.link ? 'bg-gray-600' : 'bg-transparent'}`}>{data.name}</Link>
+                    </li>
+                ))}
             </ul>
         </div>
     );

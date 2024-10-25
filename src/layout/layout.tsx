@@ -17,7 +17,9 @@ export default function Layout() {
       <Header onToggle={toggleSidebar} />
       <div className="flex">
         <Sidebar isOpen={isSidebarOpen} />
-        <Outlet />
+        <div className="flex-grow">
+          <Outlet />
+        </div>
       </div>
       <Footer />
     </div>

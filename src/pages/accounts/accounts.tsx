@@ -46,7 +46,7 @@ const Accounts = () => {
   ];
 
   return (
-    <div className="p-6 border-red-50 border-2 w-full">
+    <div className="p-6 border-red-50 border-2">
       {/* Header with Title and Button */}
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">My Accounts</h1>
