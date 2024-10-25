@@ -14,9 +14,9 @@ export default function Login() {
   });
 
   const onSubmit = (data: User) => {
-    const fakeToken = 'some-token';
-    const fakeUser = { username: data.username, password: data.password };
-    login(fakeToken, fakeUser);
+    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJleHAiOjE3Mjk5MTM0NDd9.5WQleKeW4wkzWV2SXkM6gMdCbQn3GUGUvWc5gCd58M15752fjJpOi42u--dr76AYR0_HNHwy_JmN43HehiEfdg';
+    const user = { username: 'sandip', fullName: 'Sandip Shakya', password: data.password, email: 'sandipshakya@gmail.com' };
+    login(token, user);
     navigate('/');
   };
 

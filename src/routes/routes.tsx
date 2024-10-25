@@ -7,7 +7,7 @@ import Accounts from "../pages/accounts/accounts";
 import Transactions from "../pages/transactions/transactions";
 import { AuthProvider } from "../auth/authcontext";
 import ProtectedRoute from "./protected-route";
-import Category from "../pages/category/category";
+import Budgets from "../pages/budgets/budgets";
 
 export const router = createBrowserRouter([
     {
@@ -27,8 +27,8 @@ export const router = createBrowserRouter([
                 element: <Transactions />
             },
             {
-                path: "category",
-                element: <Category />
+                path: "budgets",
+                element: <Budgets />
             },
         ],
     },
