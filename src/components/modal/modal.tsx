@@ -37,14 +37,14 @@ const Modal = ({ isOpen, onClose, title = 'Create', children, disableClose }: Mo
         {/* Modal Header */}
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold">{title}</h2>
-          {!disableClose && (
-            <button
-              onClick={onClose}
-              className="text-gray-600 hover:text-gray-800 focus:outline-none"
-            >
-              &#10005;
-            </button>
-          )}
+
+          <button
+            onClick={onClose}
+            className="text-gray-600 hover:text-gray-800 focus:outline-none"
+          >
+            &#10005;
+          </button>
+
         </div>
 
         {/* Modal Content */}

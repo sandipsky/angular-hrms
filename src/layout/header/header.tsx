@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuth } from "../../auth/authcontext";
+import { useAuth } from "../../context/authcontext";
 import DropdownMenu from "../../components/dropdown/dropdown";
 import { Link } from "react-router-dom";
 

@@ -8,11 +8,7 @@ export const navData = [
         link: '/transactions'
     },
     {
-        name: 'Accounts',
-        link: '/accounts'
+        name: 'Category',
+        link: '/category'
     },
-    {
-        name: 'Budgets',
-        link: '/budgets'
-    }
 ]

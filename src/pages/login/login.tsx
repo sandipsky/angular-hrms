@@ -1,5 +1,5 @@
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { useAuth } from "../../auth/authcontext";
+import { useAuth } from "../../context/authcontext";
 import { useForm } from "react-hook-form";
 import { User } from "../../models/user";
 

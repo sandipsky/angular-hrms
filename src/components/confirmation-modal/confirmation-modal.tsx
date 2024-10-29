@@ -3,7 +3,7 @@ import { useRef, useEffect } from "react";
 type ModalProps = {
     isOpen: boolean;
     onClose: () => void;
-    onConfirm: () => void; // Assuming you'll use this for confirming actions
+    onConfirm: () => void;
     disableClose?: boolean;
     message: string;
 };
@@ -54,7 +54,7 @@ const ConfirmationModal = ({ isOpen, onClose, onConfirm, disableClose, message }
                 {/* Modal Actions */}
                 <div className="flex justify-end items-center gap-2">
                     <button
-                        onClick={onConfirm} // Call the confirm function on Yes
+                        onClick={onConfirm}
                         className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors duration-200"
                     >
                         Yes
