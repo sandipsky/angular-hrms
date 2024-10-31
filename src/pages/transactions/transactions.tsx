@@ -22,7 +22,7 @@ const Transactions: React.FC = () => {
     const [modalTitle, setModalTitle] = useState('');
     const [currentTransaction, setCurrentTransaction] = useState<Transaction | null>(null);
 
-    const { register, handleSubmit, reset, setValue, watch, formState: { errors } } = useForm<Transaction>();
+    const { register, handleSubmit, reset, setValue, formState: { errors } } = useForm<Transaction>();
 
     const openAddModal = () => {
         setModalTitle("Add Transaction");
@@ -68,13 +68,12 @@ const Transactions: React.FC = () => {
 
     return (
         <div className="p-6">
-            <h1 className="text-3xl font-bold mb-6">Transactions</h1>
-            <button
-                onClick={openAddModal}
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 mb-4"
-            >
-                Add Transaction
-            </button>
+            <div className="flex justify-between items-center mb-6">
+                <h1 className="text-3xl font-bold">Transactions</h1>
+                <button onClick={openAddModal} className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">
+                    Add Transaction
+                </button>
+            </div>
 
             {/* Transactions Table */}
             <div className="overflow-x-auto">

@@ -13,7 +13,7 @@ const Category = () => {
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [selectedTab, setSelectedTab] = useState("Expense");
 
-  const { register, handleSubmit, reset, setValue, watch, formState: { errors } } = useForm({
+  const { register, handleSubmit, reset, setValue, formState: { errors } } = useForm({
     mode: "onChange",
   });
 
@@ -134,18 +134,6 @@ const Category = () => {
             </div>
 
             <p className="text-blue-500 text-2xl font-semibold">${item.total}</p>
-            {item.type == 'Expense' && <div className="mt-4">
-              <div className="w-full bg-gray-200 h-2 rounded-full mb-2">
-                <div
-                  className="bg-blue-500 h-2 rounded-full"
-                  style={{ width: `${(item.spent / item.total) * 100}%` }}
-                ></div>
-              </div>
-              <div className="flex justify-between text-sm text-gray-600">
-                <span>${item.spent} Spent</span>
-                <span>${item.total - item.spent} Remaining</span>
-              </div>
-            </div>}
           </div>
         ))}
       </div>
@@ -175,19 +163,6 @@ const Category = () => {
             </select>
             {errors.type && <span className="text-red-500 text-sm">{errors.type.message?.toString()}</span>}
           </div>
-
-          {watch("type") === "Expense" && (
-            <div className="mb-4">
-              <label className="text-gray-700 text-sm font-bold mb-2">Budget</label>
-              <input
-                type="number"
-                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
-                placeholder="Enter total budget"
-                {...register("total", { required: "Budget is required" })}
-              />
-              {errors.total && <span className="text-red-500 text-sm">{errors.total.message?.toString()}</span>}
-            </div>
-          )}
 
           <div className="flex justify-between">
             <button
