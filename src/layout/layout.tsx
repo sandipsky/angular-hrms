@@ -1,6 +1,5 @@
 import { Outlet } from "react-router";
 import Header from "./header/header";
-import Footer from "./footer/footer";
 import Sidebar from "./sidebar/sidebar";
 import { useState } from "react";
 
@@ -15,13 +14,12 @@ export default function Layout() {
   return (
     <div>
       <Header onToggle={toggleSidebar} />
-      <div className="flex">
+      <div className="flex h-[calc(100vh-64px)]">
         <Sidebar isOpen={isSidebarOpen} />
-        <div className="flex-grow">
+        <div className="flex-grow overflow-auto">
           <Outlet />
         </div>
       </div>
-      <Footer />
     </div>
   )
 }

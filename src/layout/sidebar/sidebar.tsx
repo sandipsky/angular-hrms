@@ -5,7 +5,7 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
     const location = useLocation();
 
     return (
-        <div className={`${isOpen ? 'w-[170px]' : 'w-0'} overflow-hidden h-screen bg-gray-800 text-white transition-width duration-300 ease-in-out`}>
+        <div className={`${isOpen ? 'w-[170px]' : 'w-0'} overflow-hidden h-full bg-gray-800 text-white transition-width duration-300 ease-in-out`}>
             <ul className="px-2 flex flex-col gap-2">
                 {navData.map((data, index) => (
                     <li key={index}>
